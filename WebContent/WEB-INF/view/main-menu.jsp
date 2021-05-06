@@ -11,7 +11,11 @@
 <h1>HOME PAGE</h1>
 
 <a href="showForm">SHow form</a>
-
+<br>
 <a href="student/showForm">Student SHow form</a>
+
+<br>
+<a href="customer/showForm">Customer SHow form</a>
+
 </body>
 </html>

@@ -9,12 +9,13 @@
 </head>
 <body>
 
- <form:form action="processForm" modelAttribute="student">
+ <form:form action="processForm2" modelAttribute="student">
  
  First Name: <form:input path="firstName"/>
 <br>
 <br>
- Last Name: <form:input path="lastName"/>
+ Last Name*: <form:input path="lastName"/> <br>
+ <form:errors path="lastName" cssClass="error"></form:errors>
  
  <br>
 <%--  <form:select path="country"> --%>
