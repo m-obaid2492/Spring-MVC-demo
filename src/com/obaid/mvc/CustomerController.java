@@ -2,9 +2,12 @@ package com.obaid.mvc;
 
 import javax.validation.Valid;
 
+import org.springframework.beans.propertyeditors.StringTrimmerEditor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.WebDataBinder;
+import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -25,11 +28,19 @@ public class CustomerController {
 	
 
 	//with validations
+	@InitBinder
+	public void initBinder(WebDataBinder dataBinder) {
+		StringTrimmerEditor stringTrimmerEditor= new StringTrimmerEditor(true);
+		dataBinder.registerCustomEditor(String.class, stringTrimmerEditor);
+	}
+	
 	@RequestMapping("/processForm")
 	public String processForm(@Valid @ModelAttribute("customer") Customer newCustomer,
 			BindingResult bindingResult) {
 		
 		System.out.println("Customer:"+newCustomer.toString());
+		System.out.println(bindingResult);
+		System.out.println("/n/n/n/n/n/n");
 		
 		if (bindingResult.hasErrors()) {
 			return "customer-form";
